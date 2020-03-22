@@ -6,7 +6,7 @@
         const url = "http://covid19.th-stat.com/"; // site that doesn’t send Access-Control-*
         fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
         .then(response => response.text())
-        .then(contents => { this.a(contents) })
+        .then(contents => { this.getProvince(contents) })
             
             
         function readTextFile(file, callback) {
@@ -21,7 +21,7 @@
             rawFile.send(null);
         }
 
-        function a(contents){
+        function getProvince(contents){
             readTextFile("province.json", function(text){
                 var data = JSON.parse(text);
                 count(contents,data);
