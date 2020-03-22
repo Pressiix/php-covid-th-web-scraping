@@ -31,6 +31,7 @@
         
          function count(contents,province)
         {
+            var total = 0;
             var json = "";
             var counta =[];
                 for(i=1;i<=Object.keys(province).length;i++)
@@ -38,10 +39,11 @@
                     var string = ",\"province_name_en\":\""+province[i]['province']+"\"};";
                     var find = new RegExp(string, 'g');
                     counta[province[i]['province']] = (contents.match(find) || []).length;
-                    
+                    total = total + counta[province[i]['province']];
                     json += "\""+i+"\":{\""+province[i]['province']+"\":\""+counta[province[i]['province']]+"\"}";
                     json += (i!==Object.keys(province).length ? "," : "");
-                }     
+                }    
+                //console.log(total); 
                 json = "{"+json+"}";      
 
                 request = $.ajax({
