@@ -42,6 +42,5 @@ use Phpfastcache\CacheManager;
         $json = json_decode($CachedString->get(),true);
         $json = (isset($_GET['country']) ? "{\"".$_GET['country']."\":".json_encode($json[$_GET['country']])."}" : json_encode($json) );
     }
-    //echo JsonHelper::prettyFormat($json);
-    print_r(json_decode($json,true));
+    echo JsonHelper::prettyFormat($json);
 ?>
